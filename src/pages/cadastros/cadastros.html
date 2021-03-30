@@ -10,6 +10,14 @@
 
 
 <ion-content padding>
-  <p>Pagina de Cadastros</p>
-
+  <ion-list>
+    <button ion-item *ngFor="let item of items">
+      <ion-thumbnail item-start>
+        <img src="assets/imgs/avatar.png">
+      </ion-thumbnail>
+      <h2>{{ item.nome}}</h2>
+      <p>{{item.contacto1}}</p>
+    </button>
+  </ion-list>
+  
 </ion-content>
