@@ -9,6 +9,7 @@ export class ErrorInterceptor implements HttpInterceptor {
     constructor( public alertCtrl: AlertController) {
     }
 
+
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(req)
         .catch((error, caught) => {
@@ -22,7 +23,7 @@ export class ErrorInterceptor implements HttpInterceptor {
             }
 
             console.log("Erro detectado pelo interceptor:");
-            console.log(errorObj);
+             console.log(errorObj);
 
             switch(errorObj.status) {
                 case 401:
@@ -50,7 +51,7 @@ export class ErrorInterceptor implements HttpInterceptor {
     handle401() {
         let alert = this.alertCtrl.create({
             title: 'Erro 401: falha de autenticação',
-            message: 'Email ou senha incorretos',
+            message: 'contacto ou senha incorretos',
             enableBackdropDismiss: false,
             buttons: [
                 {
