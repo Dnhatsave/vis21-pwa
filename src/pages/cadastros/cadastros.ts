@@ -34,9 +34,7 @@ export class CadastrosPage {
     .subscribe(response => {
       this.items = response;
     },
-    error => {
-      console.log(error);
-    });
+    error => {});
   }
 
 }

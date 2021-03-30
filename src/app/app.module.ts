@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { RegistoService } from '../services/domain/registo.service';
+import { ErrorInterceptorProvider } from '../interceptors/error-interceptor';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { RegistoService } from '../services/domain/registo.service';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    RegistoService
+    RegistoService,
+    ErrorInterceptorProvider
   ]
 })
 export class AppModule {}
