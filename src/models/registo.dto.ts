@@ -3,8 +3,8 @@ export interface RegistoDTO {
     nome: string;
     morada: string;
     contacto1: string,
-    contacto2: string,
-    registadoPor: string;
-    email: string;
+    contacto2?: string,
+    registadoPor?: string;
+    email?: string;
     estado: string;
 }
