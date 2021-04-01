@@ -21,19 +21,33 @@ export class HomePage {
       public auth: AuthService) {
 
   }
-  ionViewWillEnter() { this.menu.swipeEnable(false);
+  ionViewWillEnter() { 
+    this.menu.swipeEnable(false);
+    
   }
   ionViewDidLeave() { this.menu.swipeEnable(true);
   }
+  ionViewDidEnter() { 
+    // this.auth.refreshToken()
+    // .subscribe(response => {
+    //   this.auth.successfullLogin(response.headers.get('Authorization'));
+    //   this.navCtrl.setRoot('PrincipalPage');
+    // },
+    // error => {
+    //   console.log(error);
+    // }); 
+  }
+
 
   login(){
     this.auth.authenticate(this.creds)
     .subscribe(response => {
       this.auth.successfullLogin(response.headers.get("Authorization"));
-      this.navCtrl.setRoot('CadastrosPage');  
+      console.log(response.headers.get("Authorization"));
+      this.navCtrl.setRoot('PrincipalPage');  
     }, 
     error =>{
-      console.log(error);
+      // console.log(error);
     });
   }
 

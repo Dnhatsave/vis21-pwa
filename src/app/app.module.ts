@@ -9,9 +9,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { RegistoService } from '../services/domain/registo.service';
+import { AuthInterceptorProvider } from '../interceptors/auth-interceptor';
 import { ErrorInterceptorProvider } from '../interceptors/error-interceptor';
 import { AuthService } from '../services/auth.service';
-import { StorageSerive } from '../services/storage.service';
+import { StorageService } from '../services/storage.service';
 
 @NgModule({
   declarations: [
@@ -31,9 +32,10 @@ import { StorageSerive } from '../services/storage.service';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RegistoService,
+    AuthInterceptorProvider,
     ErrorInterceptorProvider,
     AuthService,
-    StorageSerive
+    StorageService
   ]
 })
 export class AppModule {}
