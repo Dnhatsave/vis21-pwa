@@ -7,4 +7,5 @@ export interface RegistoDTO {
     registadoPor?: string;
     email?: string;
     estado: string;
+    password: string;
 }

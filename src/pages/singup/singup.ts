@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { s } from '@angular/core/src/render3';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AlertController, IonicPage, NavController, NavParams } from 'ionic-angular';
+import { RegistoService } from '../../services/domain/registo.service';
 
 @IonicPage()
 @Component({
@@ -10,24 +10,48 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SingupPage implements OnInit {
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    public formBuilder: FormBuilder) {
+    public formBuilder: FormBuilder,
+    public registoService: RegistoService,
+    public alertCtrl: AlertController) {
   }
 
   @Input() formGroup : FormGroup;
 
   ngOnInit(){
     this.formGroup = this.formBuilder.group({
-      nome: ['', Validators.required],
-      morada: ['', Validators.required],
-      contacto1: ['', Validators.required],
-      contacto2: ['', Validators.nullValidator],
-      email: ['', Validators.nullValidator],
+      nome: ['teste', Validators.required],
+      morada: ['tes', Validators.required],
+      contacto1: ['821234564', Validators.required],
+      contacto2: ['84', Validators.nullValidator],
+      registadoPor: ['sistema', Validators.nullValidator],
+      email: ['teste@mail.com', Validators.nullValidator],
+      estado: [0, Validators.nullValidator],
+      password: ['', Validators.required]
     });
   }
   signupUser(){
-    console.log("Registado");
+    this.registoService.insert(this.formGroup.value)
+    .subscribe(response =>{
+      this.showInsertOk();
+    }, error =>{
+
+    });
   }
 
-
-
+  showInsertOk(){
+    let alert = this.alertCtrl.create({
+      title: "Sucesso",
+      message: "Parabens a sua conta foi criada com sucesso, Aguarde pela validacao",
+      enableBackdropDismiss: false,
+      buttons: [
+        {
+          text: 'Ok',
+          handler: () => {
+            this.navCtrl.pop();
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
 }

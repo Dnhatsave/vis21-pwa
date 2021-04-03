@@ -19,4 +19,15 @@ export class RegistoService{
         return this.http.get<RegistoDTO[]>(
             `${API_CONFIG.baseUrl}/registos/contacto?value=${contacto}`);
     }
+
+    insert(obj : RegistoDTO) {
+        return this.http.post(
+            `${API_CONFIG.baseUrl}/registos`, 
+            obj,
+            { 
+                observe: 'response', 
+                responseType: 'text'
+            }
+        ); 
+    }
 }
