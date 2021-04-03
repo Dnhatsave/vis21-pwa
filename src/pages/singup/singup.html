@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Regista-se</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="formGroup" (ngSubmit)="signupUser(); $event.preventDefault()">
+    <ion-item>
+      <ion-label stacked>Nome*</ion-label>
+      <ion-input formControlName="nome" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Morada*</ion-label>
+      <ion-input formControlName="morada" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Contacto*</ion-label>
+      <ion-input formControlName="contacto1" type="number"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Contacto Alternativo</ion-label>
+      <ion-input formControlName="contacto2" type="number"></ion-input>
+    </ion-item>
+    <!-- <p class="danger" *ngIf="formGroup.controls.nome.dirty && formGroup.controls.nome.errors" margin-left>Valor inválido</p> -->
+    <ion-item>
+      <ion-label stacked>Email</ion-label>
+      <ion-input formControlName="email" type="email"></ion-input>
+    </ion-item>
+    <input type="hidden" id="estado" ng-value="0" />
+    <input type="hidden" id="registadoPor" ng-value="" /> 
+    <!-- <p class="danger" *ngIf="formGroup.controls.email.dirty && formGroup.controls.email.errors" margin-left>Valor inválido</p> -->
+       <button ion-button block type="submit" [disabled]="formGroup.invalid">Criar conta</button>
+  </form>
+
+</ion-content>
