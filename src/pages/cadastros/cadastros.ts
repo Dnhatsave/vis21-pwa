@@ -35,9 +35,9 @@ export class CadastrosPage {
       this.items = response;
     },
     error => {
-      // if(error.status == 403){
-      //   this.navCtrl.setRoot('HomePage');
-      // }
+      if(error.status == 403){
+        this.navCtrl.setRoot('HomePage');
+      }
     });
   }
 
