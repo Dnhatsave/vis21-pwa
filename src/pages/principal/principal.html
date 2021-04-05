@@ -3,10 +3,44 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Bem vindo</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h3>Vamos comecar ??</h3>
+  
+  <ion-card>
+
+    <ion-card-header>
+      Olá {{utilizador?.nome}}, Bem vindo!
+    </ion-card-header>
+  
+    <ion-card-content>
+      <hr>
+      <img src="assets/imgs/people.png" class="slide-image"/>
+      <h2 class="slide-title">Comece a criar a sua lista de contactos</h2>
+       <button ion-button large clear icon-end color="primary" (click)="registar()"  >
+          Iniciar
+          <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-card-content>
+  
+    <ion-item>
+      <ion-icon name="people" item-start></ion-icon>
+      Utilizadores Registados
+      <ion-badge item-end>0</ion-badge>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="md-checkmark-circle-outline" item-start></ion-icon>
+      Utilizadores Ativos
+      <ion-badge item-end>0</ion-badge>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon color="warning" name="md-clock" item-start></ion-icon>
+      Lista de Espera
+      <ion-badge item-end>0</ion-badge>
+    </ion-item>
+  </ion-card>
+  
 </ion-content>
