@@ -1,6 +1,9 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Regista-se</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Registar</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -18,25 +21,26 @@
       <ion-label stacked>Contacto*</ion-label>
       <ion-input formControlName="contacto1" type="number"></ion-input>
     </ion-item>
-    <ion-item>
+    <!-- <ion-item>
       <ion-label stacked>Contacto Alternativo</ion-label>
       <ion-input formControlName="contacto2" type="number"></ion-input>
-    </ion-item>
+    </ion-item> -->
     <ion-item>
       <ion-label stacked>Email</ion-label>
       <ion-input formControlName="email" type="text"></ion-input>
     </ion-item>
     <p class="danger" *ngIf="formGroup.controls.email.dirty && formGroup.controls.email.errors" margin-left>Valor inválido</p>
-
+<!-- 
     <ion-item>
       <ion-label stacked>Senha</ion-label>
       <ion-input formControlName="password" type="password"></ion-input>
-    </ion-item>
-    <p class="danger" *ngIf="formGroup.controls.password.dirty && formGroup.controls.password.errors" margin-left>Valor inválido</p>
+    </ion-item> -->
+    <!-- <p class="danger" *ngIf="formGroup.controls.password.dirty && formGroup.controls.password.errors" margin-left>Valor inválido</p> -->
 
+    <input type="hidden" id="password" formControlName="password" />
     <input type="hidden" id="estado" formControlName="estado" />
     <input type="hidden" id="registadoPor" formControlName="registadoPor"/> 
-    <button ion-button block type="submit" [disabled]="formGroup.invalid">Criar conta</button>
+    <button ion-button block type="submit" [disabled]="formGroup.invalid">Registar </button>
   </form>
 
 </ion-content>
