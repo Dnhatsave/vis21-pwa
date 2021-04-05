@@ -1,6 +1,6 @@
 
 <ion-content padding>
-  <h3>Sistema de Cadastros</h3>
+<br>
   <img src="assets/imgs/Logotipo.png" alt="logo">
 
   <form>
@@ -12,6 +12,7 @@
       <ion-label stacked>Senha</ion-label>
       <ion-input  [(ngModel)]="creds.password" name="password" type="password"></ion-input>
     </ion-item>
+    <br>
     <button ion-button block (click)="login()" >Entrar</button>
   </form>
   <button ion-button block outline (click)="signup()" >Registrar</button>

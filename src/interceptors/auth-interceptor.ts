@@ -27,20 +27,6 @@ export class AuthInterceptor implements HttpInterceptor {
 
    
 
-    // handle401() {
-    //     let alert = this.alertCtrl.create({
-    //         title: 'Erro 401: falha de autenticação',
-    //         message: 'contacto ou senha incorretos',
-    //         enableBackdropDismiss: false,
-    //         buttons: [
-    //             {
-    //                 text: 'Ok'
-    //             }
-    //         ]
-    //     });
-    //     alert.present();
-    // }
-
     
 }
 

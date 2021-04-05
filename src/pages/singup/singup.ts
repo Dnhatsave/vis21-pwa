@@ -25,7 +25,7 @@ export class SingupPage implements OnInit {
       contacto2: ['84', Validators.nullValidator],
       registadoPor: ['sistema', Validators.nullValidator],
       email: ['teste@mail.com', Validators.nullValidator],
-      estado: [0, Validators.nullValidator],
+      estado: [1, Validators.nullValidator],
       password: ['', Validators.required]
     });
   }
