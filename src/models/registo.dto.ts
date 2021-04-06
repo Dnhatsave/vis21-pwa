@@ -8,4 +8,5 @@ export interface RegistoDTO {
     email?: string;
     estado: string;
     password: string;
+    perfil:string;
 }

@@ -8,10 +8,53 @@
 
 <ion-content padding>
   
-  <ion-card>
+  
+
+  <ion-card *ngIf="utilizador?.perfil == 'ADMIN'; else elseBlock">
 
     <ion-card-header>
       Olá {{utilizador?.nome}}, Bem vindo!
+    </ion-card-header>
+  
+    <ion-card-content>
+      <button ion-item (click)="listarContactos()"  >
+        <ion-icon name="people" item-start></ion-icon>
+        Novos Cadastros
+        <ion-badge item-end>5</ion-badge>
+      </button>
+  
+      <button ion-item>
+        <ion-icon name="md-checkmark-circle-outline" item-start></ion-icon>
+        Utilizadores Ativos
+        <ion-badge item-end>0</ion-badge>
+      </button>
+  
+      <button ion-item>
+        <ion-icon color="warning" name="md-clock" item-start></ion-icon>
+        Lista de Espera
+        <ion-badge item-end>0</ion-badge>
+      </button>
+      <!-- <h2 class="slide-title">Lista de contactos</h2>
+      <ion-list>
+        <button ion-item *ngFor="let item of items">
+          <ion-thumbnail item-start>
+            <img src="assets/imgs/avatar.png">
+          </ion-thumbnail>
+          <h2>{{item.nome}}</h2>
+          <p>{{item.contacto1}}</p>
+        </button>
+      </ion-list> -->
+
+    </ion-card-content>
+  
+   
+  </ion-card>
+  
+  <ng-template #elseBlock>
+  <ion-card>
+
+    <ion-card-header>
+      Olá {{utilizador?.nome}}, Bem vindo! 
     </ion-card-header>
   
     <ion-card-content>
@@ -24,23 +67,13 @@
       </button>
     </ion-card-content>
   
-    <ion-item>
+    <button ion-item>
       <ion-icon name="people" item-start></ion-icon>
-      Utilizadores Registados
+      Meus contactos 
       <ion-badge item-end>0</ion-badge>
-    </ion-item>
-
-    <ion-item>
-      <ion-icon name="md-checkmark-circle-outline" item-start></ion-icon>
-      Utilizadores Ativos
-      <ion-badge item-end>0</ion-badge>
-    </ion-item>
-
-    <ion-item>
-      <ion-icon color="warning" name="md-clock" item-start></ion-icon>
-      Lista de Espera
-      <ion-badge item-end>0</ion-badge>
-    </ion-item>
+    </button>
   </ion-card>
+</ng-template>
+
   
 </ion-content>

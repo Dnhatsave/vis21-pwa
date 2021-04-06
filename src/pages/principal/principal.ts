@@ -20,6 +20,7 @@ export class PrincipalPage {
 
   utilizador: RegistoDTO[];
 
+
   constructor(
     public navCtrl: NavController,
     public storage: StorageService,
@@ -41,11 +42,22 @@ export class PrincipalPage {
         
       }else{
           // this.navCtrl.setRoot('HomePage');
-      }
+      }   
   }
 
   registar(){
     this.navCtrl.push('RegistarPage');
   }
 
+  listarContactos(){
+    this.navCtrl.push('CadastrosPage');
+  }
+
+  listarPendentes(){
+    this.navCtrl.push('PendentesPage');
+  }
+
+  listarAtivos(){
+    this.navCtrl.push('AtivosPage');
+  }
 }

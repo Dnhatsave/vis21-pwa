@@ -41,4 +41,8 @@ export class CadastrosPage {
     });
   }
 
+  mostrarUtilizador(utilizador_id : string){
+    this.navCtrl.push('UserPage', {utilizador_id : utilizador_id});
+  }
+
 }

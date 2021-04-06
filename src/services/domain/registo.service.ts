@@ -12,22 +12,26 @@ export class RegistoService{
 
     findAll() :Observable<RegistoDTO[]> {
         
-        return this.http.get<RegistoDTO[]>(`${API_CONFIG.herokuUrl}/registos`);
+        return this.http.get<RegistoDTO[]>(`${API_CONFIG.baseUrl}/registos`);
     }
 
     findByContacto(contacto:string) : Observable<RegistoDTO[]>{
         return this.http.get<RegistoDTO[]>(
-            `${API_CONFIG.herokuUrl}/registos/contacto?value=${contacto}`);
+            `${API_CONFIG.baseUrl}/registos/contacto?value=${contacto}`);
+    }
+    findById(id:string) : Observable<RegistoDTO[]>{
+        return this.http.get<RegistoDTO[]>(
+            `${API_CONFIG.baseUrl}/registos/${id}`);
     }
 
     findByContacto2(contacto:string) : Observable<RegistoDTO>{
         return this.http.get<RegistoDTO>(
-            `${API_CONFIG.herokuUrl}/registos/contacto?value=${contacto}`);
+            `${API_CONFIG.baseUrl}/registos/contacto?value=${contacto}`);
     }
 
     insert(obj : RegistoDTO) {
         return this.http.post(
-            `${API_CONFIG.herokuUrl}/registos`, 
+            `${API_CONFIG.baseUrl}/registos`, 
             obj, 
             { 
                 observe: 'response', 

@@ -18,7 +18,7 @@ export class AuthService{
 
     authenticate(creds : CredenciasDTO){
         
-        return this.http.post(`${API_CONFIG.herokuUrl}/login`, 
+        return this.http.post(`${API_CONFIG.baseUrl}/login`, 
         creds,
         {
             observe: 'response',
@@ -27,7 +27,7 @@ export class AuthService{
     }
     refreshToken() {
         return this.http.post(
-            `${API_CONFIG.herokuUrl}/auth/refresh_token`, 
+            `${API_CONFIG.baseUrl}/auth/refresh_token`, 
             {},
             {
                 observe: 'response',
