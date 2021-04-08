@@ -39,4 +39,26 @@ export class RegistoService{
             }
         ); 
     }
+
+
+    validar(id:string) {
+        return this.http.put(
+            `${API_CONFIG.baseUrl}/registos/aprovar/${id}`,
+            { 
+                observe: 'response', 
+                responseType: 'text'
+            }
+        ); 
+    }
+
+    rejeitar(id:string) {
+        return this.http.put(
+            `${API_CONFIG.baseUrl}/registos/rejeitar/${id}`,
+            { 
+                observe: 'response', 
+                responseType: 'text'
+            }
+        ); 
+    }
+
 }

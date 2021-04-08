@@ -19,7 +19,21 @@
   <p text-center>Morada  : <b>{{utilizador?.morada}}   </b></p>
   <p text-center>situação: <b>{{utilizador?.estado}}   </b></p>
   <p text-center>Perfil: <b>{{utilizador?.perfil}}   </b></p>
-  <hr>
-  <p>Registado por <b>{{utilizador?.registadoPor}}</b></p>
+  <p>Registado por: <b>{{utilizador?.registadoPor}}</b></p>
+  <br>
+  <br>
+  <br>
+
+  <div text-center *ngIf="utilizador?.estado == 'PENDENTE'" >
+    <hr>
+    <button ion-button round color="secondary" (click)="aprovar(utilizador?.id)">
+      Aprovar
+   </button>
+   <button ion-button round color="danger" (click)="rejeitar(utilizador?.id)" >
+      Rejeitar
+   </button>
+  </div>
+  
+
 
 </ion-content>

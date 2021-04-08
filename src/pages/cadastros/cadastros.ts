@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AlertController, IonicPage, NavController, NavParams } from 'ionic-angular';
 import { API_CONFIG } from '../../config/api.config';
 import { RegistoDTO } from '../../models/registo.dto';
 import { RegistoService } from '../../services/domain/registo.service';
@@ -21,9 +21,12 @@ export class CadastrosPage {
   herokuUrl: string = API_CONFIG.herokuUrl;
 
   items : RegistoDTO[];
+  utilizador : RegistoDTO[];
+
 
   constructor(
     public navCtrl: NavController,
+    public alertCtrl: AlertController,
      public navParams: NavParams,
      public registoService: RegistoService) {
   }
@@ -39,10 +42,64 @@ export class CadastrosPage {
         this.navCtrl.setRoot('HomePage');
       }
     });
+
   }
+  
 
   mostrarUtilizador(utilizador_id : string){
     this.navCtrl.push('UserPage', {utilizador_id : utilizador_id});
+  }
+
+
+  aprovar(id:string){
+    this.registoService.validar(id)
+    .subscribe(response =>{
+      this.showApproved();
+    }, error =>{
+
+    });
+  }
+
+  rejeitar(id:string){
+    this.registoService.rejeitar(id)
+    .subscribe(response =>{
+      this.showRejected();
+    }, error =>{
+
+    });
+  }
+
+  showApproved(){
+    let alert = this.alertCtrl.create({
+      title: "Sucesso",
+      message: "A conta foi ativada com sucesso",
+      enableBackdropDismiss: false,
+      buttons: [
+        {
+          text: 'Ok',
+          handler: () => {
+            this.navCtrl.setRoot('CadastrosPage');
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+  showRejected(){
+    let alert = this.alertCtrl.create({
+      title: "Sucesso",
+      message: "A conta foi Desabilitada da lista",
+      enableBackdropDismiss: false,
+      buttons: [
+        {
+          text: 'Ok',
+          handler: () => {
+            this.navCtrl.setRoot('CadastrosPage');
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 
 }

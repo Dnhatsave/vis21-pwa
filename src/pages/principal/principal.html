@@ -23,17 +23,19 @@
         <ion-badge item-end>5</ion-badge>
       </button>
   
-      <button ion-item>
-        <ion-icon name="md-checkmark-circle-outline" item-start></ion-icon>
-        Utilizadores Ativos
+      <button ion-item (click)="listarAtivos()" >
+        <ion-icon color="warning" name="md-checkmark-circle-outline" item-start></ion-icon>
+         Aprovados
+        <ion-badge item-end>0</ion-badge>
+      </button>
+
+      <button ion-item (click)="listarPendentes()" >
+        <ion-icon name="md-clock" item-start></ion-icon>
+        Em Espera
         <ion-badge item-end>0</ion-badge>
       </button>
   
-      <button ion-item>
-        <ion-icon color="warning" name="md-clock" item-start></ion-icon>
-        Lista de Espera
-        <ion-badge item-end>0</ion-badge>
-      </button>
+      
       <!-- <h2 class="slide-title">Lista de contactos</h2>
       <ion-list>
         <button ion-item *ngFor="let item of items">

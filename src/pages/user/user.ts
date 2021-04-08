@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AlertController, IonicPage, NavController, NavParams } from 'ionic-angular';
 import { RegistoDTO } from '../../models/registo.dto';
 import { RegistoService } from '../../services/domain/registo.service';
 import { StorageService } from '../../services/storage.service';
@@ -22,6 +22,7 @@ export class UserPage {
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
+    public alertCtrl: AlertController,
     public registoService: RegistoService,
     public storage: StorageService) {
   }

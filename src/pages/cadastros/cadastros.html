@@ -11,13 +11,17 @@
 
 <ion-content padding>
       <h2>Registos</h2>
-        <button ion-item *ngFor="let item of items"
-         (click)="mostrarUtilizador(item.id)" >
-          <ion-thumbnail item-start>
+        <ion-item *ngFor="let item of items" >
+
+          <ion-thumbnail item-start (click)="mostrarUtilizador(item.id)">
             <img src="assets/imgs/avatar.png">
           </ion-thumbnail>
-          <h2>{{ item.nome}}</h2>
-          <p>{{item.contacto1}}</p>
-        </button> 
+          <h2 (click)="mostrarUtilizador(item.id)" >{{ item.nome}}</h2>
+          <p (click)="mostrarUtilizador(item.id)" >{{item.contacto1}}</p>
+          <p *ngIf="item?.estado == 'PENDENTE'">
+          <button ion-button small (click)="aprovar(item?.id)" >Aprovar</button>
+          <button ion-button color="light" small (click)="rejeitar(item?.id)" >Rejeitar</button>
+          </p>
+        </ion-item> 
              
 </ion-content>
