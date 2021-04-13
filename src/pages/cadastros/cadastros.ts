@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AlertController, IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AlertController, IonicPage, LoadingController, NavController, NavParams } from 'ionic-angular';
 import { API_CONFIG } from '../../config/api.config';
 import { RegistoDTO } from '../../models/registo.dto';
 import { RegistoService } from '../../services/domain/registo.service';
@@ -28,14 +28,18 @@ export class CadastrosPage {
     public navCtrl: NavController,
     public alertCtrl: AlertController,
      public navParams: NavParams,
-     public registoService: RegistoService) {
+     public registoService: RegistoService,
+     public loadingController: LoadingController) {
   }
 
 
   ionViewDidLoad() {
+    let loading = this.presentLoading();
+
     this.registoService.findAll()
     .subscribe(response => {
       this.items = response;
+      loading.dismiss();
     },
     error => {
       if(error.status == 403){
@@ -100,6 +104,14 @@ export class CadastrosPage {
       ]
     });
     alert.present();
+  }
+
+  presentLoading() {
+    const loading =  this.loadingController.create({
+      content: 'Porfavor Agurade...'
+    });
+     loading.present();
+     return loading;
   }
 
 }

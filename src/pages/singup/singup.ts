@@ -19,13 +19,13 @@ export class SingupPage implements OnInit {
 
   ngOnInit(){
     this.formGroup = this.formBuilder.group({
-      nome: ['teste', Validators.required],
-      morada: ['tes', Validators.required],
-      contacto1: ['821234564', Validators.required],
-      contacto2: ['84', Validators.nullValidator],
+      nome: ['', Validators.required],
+      morada: ['', Validators.required],
+      contacto1: ['84', Validators.required],
+      contacto2: ['82', Validators.nullValidator],
       registadoPor: ['sistema', Validators.nullValidator],
-      email: ['teste@mail.com', Validators.nullValidator],
-      estado: [1, Validators.nullValidator],
+      email: ['ex@gmail.com', Validators.nullValidator],
+      estado: [0, Validators.nullValidator],
       password: ['', Validators.required]
     });
   }

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, LoadingController, NavController, NavParams } from 'ionic-angular';
+import { RegistoDTO } from '../../models/registo.dto';
+import { RegistoService } from '../../services/domain/registo.service';
 
 /**
  * Generated class for the AtivosPage page.
@@ -15,11 +17,36 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class AtivosPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  items : RegistoDTO[];
+
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    public registoService: RegistoService,
+    public loadingController: LoadingController) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AtivosPage');
+    let loading = this.presentLoading();
+    this.registoService.findAll()
+    .subscribe(response => {
+      this.items = response;
+      loading.dismiss();
+    },
+    error => {
+      
+    });
+  }
+
+  mostrarUtilizador(utilizador_id : string){
+    this.navCtrl.push('UserPage', {utilizador_id : utilizador_id});
+  }
+
+  presentLoading() {
+    const loading =  this.loadingController.create({
+      content: 'Porfavor Agurade...'
+    });
+     loading.present();
+     return loading;
   }
 
 }

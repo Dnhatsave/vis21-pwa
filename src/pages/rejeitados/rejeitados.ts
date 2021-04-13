@@ -4,7 +4,7 @@ import { RegistoDTO } from '../../models/registo.dto';
 import { RegistoService } from '../../services/domain/registo.service';
 
 /**
- * Generated class for the PendentesPage page.
+ * Generated class for the RejeitadosPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -12,21 +12,21 @@ import { RegistoService } from '../../services/domain/registo.service';
 
 @IonicPage()
 @Component({
-  selector: 'page-pendentes',
-  templateUrl: 'pendentes.html',
+  selector: 'page-rejeitados',
+  templateUrl: 'rejeitados.html',
 })
-export class PendentesPage {
+export class RejeitadosPage {
 
   items : RegistoDTO[];
-
+  
   constructor(public navCtrl: NavController,
-     public navParams: NavParams,
-     public registoService: RegistoService,
-     public loadingController: LoadingController) {
+    public navParams: NavParams,
+    public registoService: RegistoService,
+    public loadingController: LoadingController) {
   }
 
   ionViewDidLoad() {
-    let loading = this.presentLoading();
+    let loading = this.presentLoading()
     this.registoService.findAll()
     .subscribe(response => {
       this.items = response;
@@ -37,10 +37,6 @@ export class PendentesPage {
     });
   }
 
-  mostrarUtilizador(utilizador_id : string){
-    this.navCtrl.push('UserPage', {utilizador_id : utilizador_id});
-  }
-
   presentLoading() {
     const loading =  this.loadingController.create({
       content: 'Porfavor Agurade...'
@@ -48,4 +44,5 @@ export class PendentesPage {
      loading.present();
      return loading;
   }
+
 }
