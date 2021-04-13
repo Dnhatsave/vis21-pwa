@@ -41,6 +41,7 @@ export class PrincipalPage {
         error=>{
           if(error.status == 403){
             // this.navCtrl.setRoot('HomePage');
+            loading.dismiss();
           }
         });
         

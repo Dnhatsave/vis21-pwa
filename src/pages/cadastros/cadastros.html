@@ -10,6 +10,12 @@
 
 
 <ion-content padding>
+      <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content>
+
+        </ion-refresher-content>
+      </ion-refresher>
+
       <h2>Registos</h2>
         <ion-item *ngFor="let item of items" >
 

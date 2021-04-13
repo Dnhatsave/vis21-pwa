@@ -33,7 +33,7 @@ export class RejeitadosPage {
       loading.dismiss();
     },
     error => {
-      
+      loading.dismiss();
     });
   }
 

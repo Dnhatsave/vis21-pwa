@@ -33,7 +33,7 @@ export class AtivosPage {
       loading.dismiss();
     },
     error => {
-      
+      loading.dismiss();
     });
   }
 

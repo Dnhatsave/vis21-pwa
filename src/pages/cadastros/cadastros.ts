@@ -34,6 +34,11 @@ export class CadastrosPage {
 
 
   ionViewDidLoad() {
+    
+    this.loadData();
+  }
+
+  loadData(){
     let loading = this.presentLoading();
 
     this.registoService.findAll()
@@ -46,7 +51,6 @@ export class CadastrosPage {
         this.navCtrl.setRoot('HomePage');
       }
     });
-
   }
   
 
@@ -114,4 +118,10 @@ export class CadastrosPage {
      return loading;
   }
 
+  doRefresh(refresher){
+    this.loadData();
+    setTimeout(()=>{
+      refresher.complete();
+    }, 1000);
+  }
 }

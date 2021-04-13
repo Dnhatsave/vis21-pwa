@@ -33,7 +33,7 @@ export class PendentesPage {
       loading.dismiss();
     },
     error => {
-      
+      loading.dismiss();
     });
   }
 
